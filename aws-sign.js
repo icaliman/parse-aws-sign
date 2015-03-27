@@ -110,6 +110,8 @@ AWSRestSigner.prototype.sign = function(opts) {
   }
 
   opts.headers["Authorization"] = this._sign(method, bucket, path, date, contentType, contentMd5, xAmzHeaders);
+
+  return opts;
 }
 
 

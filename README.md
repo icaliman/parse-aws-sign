@@ -31,6 +31,27 @@ signer.sign(opts);
 Parse.Cloud.httpRequest(opts);
 ```
 
+or
+
+```js
+var AwsSign = require('cloud/modules/aws-sign.js');
+var signer = new AwsSign({
+	accessKeyId: 'AKIAIOSFODNN7EXAMPLE',
+	secretAccessKey: 'wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY'
+});
+
+Parse.Cloud.httpRequest(signer.sign({
+	method: 'PUT',
+	url: 'http://johnsmith.s3.amazonaws.com/photos/puppy.jpg',
+	headers: { ... },
+	... // Other request options, ignored by AwsSign.
+	body: {}
+	success: function() {},
+	error: function() {}
+}));
+```
+
+
 The following keys are mandatory: 
 
 * `method`
